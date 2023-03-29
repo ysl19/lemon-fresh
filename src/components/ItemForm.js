@@ -5,7 +5,7 @@ import  GroceryContext from "./GroceryContext";
 const ItemForm = ({ modalChange }) => {
 
   const { groceryList, setGroceryList } = useContext(GroceryContext);
-  const [item, setItem] = useState({ id:1,  name: "", date: "" });
+  const [item, setItem] = useState({ id:0,  name: "", date: "" });
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -24,9 +24,11 @@ const ItemForm = ({ modalChange }) => {
     e.preventDefault();
     modalChange(false);
     const newItem = { ...item, id: groceryList.length + 1 };
+    
     setGroceryList((prevList) => [...prevList, newItem]);
-
   };
+
+  
 
   return (
     <form
